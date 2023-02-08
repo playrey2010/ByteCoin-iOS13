@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var currencyPicker: UIPickerView!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var bitcoinLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
