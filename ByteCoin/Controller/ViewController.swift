@@ -7,12 +7,8 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, CoinManagerDelegate {
-
-    
-    
-    
+// MARK: View Controller
+class ViewController: UIViewController {
     @IBOutlet weak var currencyPicker: UIPickerView!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var bitcoinLabel: UILabel!
@@ -27,8 +23,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         coinManager.delegate = self
         
     }
-    
-    
+}
+
+// MARK: UIPickerViewer Delegate
+extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     // how many columns in our pickerviewer
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -45,7 +43,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         coinManager.getCoinPrice(for: coinManager.currencyArray[row])
     }
-    
+}
+
+// MARK: Coin Manager Delegate
+extension ViewController: CoinManagerDelegate {
     // For CoinManagerDelegate
     func didFailWithErrors(error: Error) {
         print(error)
@@ -59,4 +60,3 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
     }
 }
-
